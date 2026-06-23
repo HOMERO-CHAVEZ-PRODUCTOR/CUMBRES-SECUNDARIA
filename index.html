@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GRADUACIÓN | CUMBRES SECUNDARIA 2026</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Paleta Conceptual "Un Verano Sin Ti": Sunset y Océano */
+            --bb-sunset: #FF6F61; /* Naranja/Coral vibrante */
+            --bb-ocean: #2B86C5; /* Azul profundo/tropical */
+            --text-light: #FFFFFF; 
+            --bg-dark: #0D0E15; 
+            --glass-bg: rgba(13, 14, 21, 0.6); /* Cristal oscuro para legibilidad sobre la imagen limpia */
+            --glass-border: rgba(255, 111, 97, 0.3);
+            --transition-smooth: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* --- ARQUITECTURA BASE --- */
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+        
+        body { 
+            font-family: 'Inter', sans-serif;
+            color: var(--text-light);
+            line-height: 1.8; 
+            overflow-x: hidden;
+            background-color: var(--bg-dark);
+        }
+
+        /* --- FONDO DE IMAGEN (2.png) 100% LIMPIO --- */
+        .bg-image {
+            position: fixed;
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%;
+            background-image: url('2.png');
+            background-size: cover;
+            background-position: center;
+            z-index: -4;
+        }
+
+        /* --- TIPOGRAFÍA SPACE GROTESK --- */
+        h1, h2, h3, h4, .accent-title, .date-box, .time-content span, .dish span {
+            font-family: 'Space Grotesk', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+        }
+
+        /* --- ESTRUCTURA EDITORIAL FLOTANTE --- */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .reveal-node { 
+            opacity: 0; 
+            transform: translateY(30px);
+            animation: reveal 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; 
+        }
+
+        @keyframes reveal {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        section {
+            margin-bottom: 150px;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--bb-sunset);
+            margin-bottom: 60px;
+            letter-spacing: 4px;
+        }
+
+        /* --- PORTADA --- */
+        header {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .title-wrapper {
+            background: rgba(13, 14, 21, 0.4);
+            padding: 50px;
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
+            border: 1px solid var(--glass-border);
+        }
+
+        header h1 { 
+            font-size: clamp(3rem, 10vw, 5.5rem); 
+            margin-bottom: 5px;
+            color: var(--text-light);
+            letter-spacing: 8px;
+            line-height: 1.1;
+        }
+
+        header p { 
+            font-size: 1.2rem; 
+            letter-spacing: 10px; 
+            color: var(--bb-ocean); 
+            font-weight: 600;
+            margin-top: 20px; 
+        }
+
+        .wave-line {
+            width: 100px;
+            height: 6px;
+            background: var(--bb-sunset);
+            border-radius: 10px;
+            margin: 40px auto 0;
+        }
+
+        /* --- FECHA Y UBICACIÓN --- */
+        .date-box {
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            letter-spacing: 6px;
+            color: var(--text-light);
+            margin-bottom: 80px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .date-box span {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            padding: 15px 25px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .location-info {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            padding: 50px 30px;
+            border-radius: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .location-info h3 {
+            font-size: 2rem;
+            color: var(--bb-sunset);
+            margin-bottom: 20px;
+        }
+
+        .location-info p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        .btn-neon {
+            display: inline-block;
+            padding: 18px 50px;
+            background: var(--bb-sunset);
+            color: var(--text-light);
+            text-decoration: none;
+            font-family: 'Space Grotesk', sans-serif;
+            letter-spacing: 2px;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 50px;
+            transition: var(--transition-smooth);
+        }
+
+        .btn-neon:hover {
+            background: var(--text-light);
+            color: var(--bb-sunset);
+        }
+
+        /* --- ITINERARIO CORREGIDO: TOTALMENTE AL CENTRO --- */
+        .timeline-wrapper {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            padding: 60px 40px;
+            border-radius: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .timeline-grid {
+            position: relative;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px 0;
+            text-align: center; /* Centra todo el contenido */
+        }
+
+        /* Línea en el centro exacto */
+        .timeline-grid::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            background: linear-gradient(to bottom, var(--bb-sunset), var(--bb-ocean));
+        }
+
+        .time-item {
+            position: relative;
+            margin-bottom: 60px;
+            padding-left: 0; /* Eliminado el padding lateral */
+        }
+
+        .time-item:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Nodo en el centro exacto */
+        .time-node {
+            width: 16px;
+            height: 16px;
+            background: var(--bb-sunset);
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 10px var(--bb-sunset);
+        }
+
+        /* Contenido centrado debajo del nodo */
+        .time-content {
+            padding-top: 30px; 
+        }
+
+        .time-content span {
+            display: block;
+            color: var(--bb-ocean);
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .time-content p {
+            color: var(--text-light);
+            font-weight: 400;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+        }
+
+        /* --- MENÚ ESTILO CARTAS FLOTANTES --- */
+        .menu-category {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            padding: 40px 30px;
+            border-radius: 30px;
+            backdrop-filter: blur(10px);
+            margin-bottom: 40px;
+        }
+
+        .menu-category h4 {
+            color: var(--bb-sunset);
+            font-size: 1.4rem;
+            margin-bottom: 30px;
+            display: inline-block;
+            border-bottom: 2px solid var(--bb-ocean);
+            padding-bottom: 10px;
+        }
+
+        .dish {
+            margin-bottom: 25px;
+        }
+
+        .dish:last-child {
+            margin-bottom: 0;
+        }
+
+        .dish span {
+            display: block;
+            color: var(--bb-ocean);
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+
+        .dish p {
+            font-weight: 300;
+            color: var(--text-light);
+            font-size: 1.05rem;
+        }
+
+        /* --- RECOMENDACIONES --- */
+        .recs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .rec-card {
+            background: var(--glass-bg);
+            border: 1px solid rgba(43, 134, 197, 0.3);
+            padding: 40px 30px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            text-align: left;
+        }
+
+        .rec-card h4 {
+            color: var(--bb-ocean);
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .rec-card p {
+            font-size: 0.95rem;
+            font-weight: 300;
+            color: var(--text-light);
+        }
+
+        /* --- AUDIO --- */
+        #music-btn {
+            position: fixed; 
+            bottom: 30px; 
+            right: 30px; 
+            width: 65px; 
+            height: 65px;
+            border-radius: 50%; 
+            z-index: 5000; 
+            border: none;
+            background: var(--bb-sunset); 
+            cursor: pointer;
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-size: 1.5rem;
+            transition: var(--transition-smooth); 
+            color: var(--text-light);
+        }
+
+        #music-btn:hover { 
+            transform: scale(1.1); 
+            background: var(--text-light);
+            color: var(--bb-sunset);
+        }
+
+        footer { 
+            padding: 80px 20px; 
+            text-align: center; 
+            border-top: 1px solid var(--glass-border); 
+            margin-top: 50px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+        }
+
+        @media (max-width: 768px) {
+            .date-box { font-size: 1.8rem; gap: 10px; }
+            section { margin-bottom: 100px; }
+            .section-title { font-size: 2rem; margin-bottom: 40px; }
+            .location-info { padding: 40px 20px; }
+            .timeline-wrapper { padding: 40px 20px; }
+            .menu-category { padding: 30px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-image"></div>
+
+    <audio id="gradAudio" loop preload="auto" playsinline>
+        <source src="musica.mp3" type="audio/mpeg">
+    </audio>
+    <button id="music-btn" onclick="gestionarMusica()">🔇</button>
+
+    <div class="container">
+        
+        <header>
+            <div class="title-wrapper reveal-node">
+                <h1>CUMBRES SECUNDARIA</h1>
+                <p>GENERACIÓN 2026</p>
+                <div class="wave-line"></div>
+            </div>
+        </header>
+
+        <main>
+            <section class="info-section">
+                <div class="date-box reveal-node">
+                    <span>04</span> <span>07</span> <span>26</span>
+                </div>
+
+                <div class="location-info reveal-node">
+                    <h3>RECEPCIÓN</h3>
+                    <p>Jardín San Martín<br>Estado de México</p>
+                    <a href="https://maps.app.goo.gl/9ynu4t6uhUpYPtiz6" target="_blank" class="btn-neon">Ver Ubicación</a>
+                </div>
+            </section>
+
+            <section class="timeline-section reveal-node">
+                <h3 class="section-title">Itinerario</h3>
+                <div class="timeline-wrapper">
+                    <div class="timeline-grid">
+                        <div class="time-item">
+                            <div class="time-node"></div>
+                            <div class="time-content">
+                                <span>08:00 PM</span>
+                                <p>Recepción</p>
+                            </div>
+                        </div>
+                        <div class="time-item">
+                            <div class="time-node"></div>
+                            <div class="time-content">
+                                <span>09:00 PM</span>
+                                <p>Cena / Violín</p>
+                            </div>
+                        </div>
+                        <div class="time-item">
+                            <div class="time-node"></div>
+                            <div class="time-content">
+                                <span>10:10 PM</span>
+                                <p>Palabras</p>
+                            </div>
+                        </div>
+                        <div class="time-item">
+                            <div class="time-node"></div>
+                            <div class="time-content">
+                                <span>10:15 PM</span>
+                                <p>Brindis</p>
+                            </div>
+                        </div>
+                        <div class="time-item">
+                            <div class="time-node"></div>
+                            <div class="time-content">
+                                <span>10:20 PM</span>
+                                <p>Se Abre Pista</p>
+                            </div>
+                        </div>
+                        <div class="time-item">
+                            <div class="time-node"></div>
+                            <div class="time-content">
+                                <span>11:00 PM</span>
+                                <p>Carrito Coctelero / Personajes Concepto</p>
+                            </div>
+                        </div>
+                        <div class="time-item">
+                            <div class="time-node"></div>
+                            <div class="time-content">
+                                <span>02:30 AM</span>
+                                <p>Fin</p>
+                            </div>
+                        </div>
+                        <div class="time-item">
+                            <div class="time-node"></div>
+                            <div class="time-content">
+                                <span>02:30 AM - 03:00 AM</span>
+                                <p>Desalojo</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="menu-section reveal-node">
+                <h3 class="section-title">Menú</h3>
+
+                <div class="menu-category">
+                    <h4>Menú Principal</h4>
+                    
+                    <div class="dish">
+                        <span>PRIMER TIEMPO</span>
+                        <p>Crema de papa y poro con tocino</p>
+                    </div>
+                    <div class="dish">
+                        <span>PLATO FUERTE</span>
+                        <p>Filete de res en salsa de 3 chiles</p>
+                    </div>
+                    <div class="dish">
+                        <span>POSTRE</span>
+                        <p>Pastel chocolate con frutos rojos</p>
+                    </div>
+                </div>
+
+                <div class="menu-category">
+                    <h4>Menú Vegano y Vegetariano</h4>
+                    <div class="dish">
+                        <p>Portobellos asados en salsa de 3 chiles</p>
+                    </div>
+                </div>
+
+                <div class="menu-category">
+                    <h4>Menú Infantil</h4>
+                    <div class="dish">
+                        <p>Ensalada César<br>Lasaña a la boloñesa<br>Brownie de chocolate</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="recs-section reveal-node">
+                <h3 class="section-title">Detalles</h3>
+                <div class="recs-grid">
+                    <div class="rec-card">
+                        <h4>CLIMA Y PROTECCIÓN</h4>
+                        <p>Sugerimos tomar precauciones e ir abrigados ante el clima del lugar.</p>
+                    </div>
+                    <div class="rec-card">
+                        <h4>ACCESO ÚNICO</h4>
+                        <p>Considere que el recinto cuenta con un solo acceso habilitado para la entrada.</p>
+                    </div>
+                    <div class="rec-card">
+                        <h4>VALET PARKING</h4>
+                        <p>Servicio externo a HC, con costo adicional por auto.</p>
+                    </div>
+                    <div class="rec-card">
+                        <h4>ÁREAS DE FUMAR</h4>
+                        <p>El consumo de tabaco está restringido exclusivamente a las áreas exteriores.</p>
+                    </div>
+                    <div class="rec-card">
+                        <h4>MENÚS ESPECIALES</h4>
+                        <p>Si requiere menú vegano, vegetariano o por alergias, solicítelo en la selección de mesas.</p>
+                    </div>
+                    <div class="rec-card">
+                        <h4>GUARDARROPA</h4>
+                        <p>No hay servicio de guardarropa. El kit de graduado será entregado en la entrada.</p>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <footer>
+            <h2 class="accent-title" style="color: var(--bb-sunset);">CUMBRES SECUNDARIA</h2>
+            <p style="color: var(--text-light); letter-spacing: 4px; font-size: 0.9rem;">GRADUACIÓN 2026</p>
+        </footer>
+    </div>
+
+    <script>
+        const audio = document.getElementById('gradAudio');
+        const btn = document.getElementById('music-btn');
+
+        function gestionarMusica() {
+            if (audio.paused) {
+                let playPromise = audio.play();
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        btn.innerHTML = "🔊";
+                    }).catch(error => {
+                        console.log("Interacción bloqueada por el navegador");
+                    });
+                }
+            } else {
+                audio.pause();
+                btn.innerHTML = "🔇";
+            }
+        }
+
+        ['click', 'touchstart'].forEach(evt => {
+            document.body.addEventListener(evt, () => {
+                if (audio.paused) {
+                    audio.play().then(() => {
+                        btn.innerHTML = "🔊";
+                    }).catch(err => console.log("Audio en espera..."));
+                }
+            }, { once: true });
+        });
+    </script>
+</body>
+</html>
